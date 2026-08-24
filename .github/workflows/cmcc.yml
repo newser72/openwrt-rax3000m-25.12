@@ -105,7 +105,10 @@ jobs:
         key: ${{ matrix.source }}-toolchain-cache
         restore-keys: |
           ${{ matrix.source }}-toolchain-cache
-            
+          
+    - name: SSH链接管理
+      uses: P3TERX/ssh2actions@v1.0.0
+        
     - name: patch修补
       run: |
         set -x
