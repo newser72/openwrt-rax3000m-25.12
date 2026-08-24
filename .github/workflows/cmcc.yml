@@ -33,13 +33,14 @@ jobs:
     runs-on: ubuntu-24.04
     strategy:
       matrix:
-        device: ["rax3000m-emmc", "xr30-emmc"]
+        #device: ["rax3000m-emmc", "xr30-emmc"]
+        device: ["rax3000m-emmc"]
         source: ["openwrt"]
         include:
           - device: "rax3000m-emmc"
             config: "CONFIG_TARGET_DEVICE_mediatek_filogic_DEVICE_cmcc_rax3000m-emmc=y"
-          - device: "xr30-emmc"
-            config: "CONFIG_TARGET_DEVICE_mediatek_filogic_DEVICE_cmcc_xr30-emmc=y"
+          #- device: "xr30-emmc"
+          #  config: "CONFIG_TARGET_DEVICE_mediatek_filogic_DEVICE_cmcc_xr30-emmc=y"
 
     steps: 
     - name: 检查分支
