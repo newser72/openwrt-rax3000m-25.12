@@ -1,10 +1,10 @@
 name: toolchain
 
-on:
-  schedule:
-    - cron: 0 17 * * 1
-  repository_dispatch:
-  workflow_dispatch:
+#on:
+#  schedule:
+#    - cron: 0 17 * * 1
+#  repository_dispatch:
+#  workflow_dispatch:
 
 env:
   DIY_P1_SH: sh/op.sh
