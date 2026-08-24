@@ -46,12 +46,22 @@ jobs:
     runs-on: ubuntu-24.04
     strategy:
       matrix:
-        device: ["rax3000m-emmc", "xr30-emmc"]
-        #device: ["rax3000m-emmc"]
+        device: ["rax3000m", "rax3000me", "rax3000m-emmc", "rax3000m-nand", "rax3000m-256m-nand", "xr30-emmc", "xr30-nand"]
+        #device: ["rax3000m-emmc", "xr30-emmc"]
         source: ["openwrt"]
         include:
+          - device: "rax3000m"
+            config: "CONFIG_TARGET_DEVICE_mediatek_filogic_DEVICE_cmcc_rax3000m=y"
+          - device: "rax3000me"
+            config: "CONFIG_TARGET_DEVICE_mediatek_filogic_DEVICE_cmcc_rax3000me=y"
           - device: "rax3000m-emmc"
             config: "CONFIG_TARGET_DEVICE_mediatek_filogic_DEVICE_cmcc_rax3000m-emmc=y"
+          - device: "rax3000m-nand"
+            config: "CONFIG_TARGET_DEVICE_mediatek_filogic_DEVICE_cmcc_rax3000m-nand=y"
+          - device: "rax3000m-256m-nand"
+            config: "CONFIG_TARGET_DEVICE_mediatek_filogic_DEVICE_cmcc_rax3000m-256m-nand=y"
+          - device: "xr30-nand"
+            config: "CONFIG_TARGET_DEVICE_mediatek_filogic_DEVICE_cmcc_xr30-nand=y"
           - device: "xr30-emmc"
             config: "CONFIG_TARGET_DEVICE_mediatek_filogic_DEVICE_cmcc_xr30-emmc=y"
 
