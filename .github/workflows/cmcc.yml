@@ -167,14 +167,14 @@ jobs:
 
         #主题
         CONFIG_PACKAGE_luci-theme-argon=y
-        CONFIG_PACKAGE_luci-theme-bootstrap-mod=y
-        CONFIG_PACKAGE_luci-app-argon-config=y
+        #CONFIG_PACKAGE_luci-theme-bootstrap-mod=y
+        #CONFIG_PACKAGE_luci-app-argon-config=y
 
         #使用mtwifi配置无线
-        CONFIG_PACKAGE_luci-app-mtwifi-cfg=y
-        CONFIG_PACKAGE_luci-i18n-mtwifi-cfg-zh-cn=y
-        CONFIG_PACKAGE_mtwifi-cfg=y
-        CONFIG_PACKAGE_lua-cjson=y
+        #CONFIG_PACKAGE_luci-app-mtwifi-cfg=y
+        #CONFIG_PACKAGE_luci-i18n-mtwifi-cfg-zh-cn=y
+        #CONFIG_PACKAGE_mtwifi-cfg=y
+        #CONFIG_PACKAGE_lua-cjson=y
 
         #MTK eqos功能
         CONFIG_PACKAGE_luci-app-eqos=y
