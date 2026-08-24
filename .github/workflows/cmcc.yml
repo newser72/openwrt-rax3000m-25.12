@@ -23,6 +23,11 @@ on:
         #default: 'luci-theme-m3e luci-app-ttyd luci-app-diskman luci-app-momo'
         default: 'luci-theme-m3e luci-app-ttyd'
         type: string
+      ssh:
+        description: 'SSH connection to Actions'
+        type: boolean
+        required: true
+        default: false
 
 env:
   DIY_P1_SH: sh/op.sh
@@ -106,8 +111,9 @@ jobs:
     #    restore-keys: |
     #      ${{ matrix.source }}-toolchain-cache
           
-    #- name: SSH链接管理
-    #  uses: P3TERX/ssh2actions@v1.0.0
+    - name: SSH链接管理
+      uses: P3TERX/ssh2actions@v1.0.0
+      if: (github.event.inputs.ssh == 'true')
         
     - name: patch修补
       run: |
