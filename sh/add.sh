@@ -1,0 +1,33 @@
+#!/bin/bash
+#
+# 版权所有 (c) 2019-2020 P3TERX <https://p3terx.com>
+#
+# 这是一个自由软件，根据 MIT 许可证授权。
+# 详细信息请参见 /LICENSE。
+#
+# https://github.com/P3TERX/Actions-OpenWrt
+
+cd $GITHUB_WORKSPACE/openwrt
+
+# 修改默认 IP
+CONFIG_FILE="package/base-files/files/bin/config_generate"
+if [ -f "$CONFIG_FILE" ]; then
+  if ! grep -q "192.168.6.1" "$CONFIG_FILE"; then
+    sed -i 's/192\.168\.6\.1/192.168.6.1/g; s/192\.168\.1\.1/192.168.6.1/g' "$CONFIG_FILE"
+    echo "IP 地址已更新为 192.168.6.1"
+  else
+    echo "IP 地址已是 192.168.6.1，无需修改"
+  fi
+else
+  echo "警告：$CONFIG_FILE 不存在，跳过 IP 修改"
+fi
+
+
+#rtp2httpd
+echo 'src-git rtp2httpd https://github.com/stackia/rtp2httpd.git' >>feeds.conf.default
+
+#rax3000m or xr30 emmc add 25dB
+cd $GITHUB_WORKSPACE/openwrt
+mkdir -p files/lib/firmware
+cp $GITHUB_WORKSPACE/eeprom/25dB-nx30pro_eeprom.bin files/lib/firmware/MT7981_iPAiLNA_EEPROM.bin
+ln -sf /lib/firmware/MT7981_iPAiLNA_EEPROM.bin files/lib/firmware/e2p
