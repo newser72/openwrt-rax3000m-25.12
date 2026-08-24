@@ -25,9 +25,3 @@ fi
 
 #rtp2httpd
 echo 'src-git rtp2httpd https://github.com/stackia/rtp2httpd.git' >>feeds.conf.default
-
-#rax3000m or xr30 emmc add 25dB
-cd $GITHUB_WORKSPACE/openwrt
-mkdir -p files/lib/firmware
-cp $GITHUB_WORKSPACE/eeprom/25dB-nx30pro_eeprom.bin files/lib/firmware/MT7981_iPAiLNA_EEPROM.bin
-ln -sf /lib/firmware/MT7981_iPAiLNA_EEPROM.bin files/lib/firmware/e2p
