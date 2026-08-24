@@ -127,6 +127,12 @@ sed -i "s/%D %V %C/%D %V $(TZ=UTC-8 date +%Y.%m.%d)/" package/base-files/files/e
 
 sed -i "s/%R/by $OP_author/" package/base-files/files/etc/openwrt_release
 
+#rax3000m or xr30 emmc add 25dB
+cd $GITHUB_WORKSPACE/openwrt
+mkdir -p files/lib/firmware
+cp $GITHUB_WORKSPACE/eeprom/25dB-nx30pro_eeprom.bin files/lib/firmware/MT7981_iPAiLNA_EEPROM.bin
+ln -sf /lib/firmware/MT7981_iPAiLNA_EEPROM.bin files/lib/firmware/e2p
+
 date=$(date +"%Y-%m-%d")
 
 
