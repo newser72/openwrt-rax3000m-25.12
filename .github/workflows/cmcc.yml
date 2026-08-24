@@ -23,6 +23,11 @@ on:
         #default: 'luci-theme-m3e luci-app-ttyd luci-app-diskman luci-app-momo'
         default: 'luci-theme-m3e luci-app-ttyd'
         type: string
+      enable_5g_25db:
+        description: '启用 5G 25dB 修改'
+        type: boolean
+        required: true
+        default: true
       ssh:
         description: 'SSH connection to Actions'
         type: boolean
@@ -31,6 +36,7 @@ on:
 
 env:
   DIY_P1_SH: sh/op.sh
+  DIY_P2_SH: sh/add.sh
 
 jobs:
   build_firmware:
@@ -226,7 +232,13 @@ jobs:
         for plugin in "${plugins[@]}"; do
           echo "CONFIG_PACKAGE_${plugin}=y" >> $SOURCE_NAME/.config
         done
-    
+
+    - name: 修改 5G 25dB
+      if: env.ENABLE_5G_25DB == 'true'
+      working-directory: ./openwrt
+      run: |
+        $GITHUB_WORKSPACE/$DIY_P2_SH
+          
     - name: 下载编译依赖
       id: package
       run: |
