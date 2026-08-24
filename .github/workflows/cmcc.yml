@@ -97,23 +97,23 @@ jobs:
         esac
         echo "release_tag=$_release_tag" >> $GITHUB_ENV  
         
-    - name: 取回缓存 staging_dir
-      uses: actions/cache@v5
-      with:
-        path: |
-          ${{ matrix.source }}/staging_dir
-        key: ${{ matrix.source }}-toolchain-cache
-        restore-keys: |
-          ${{ matrix.source }}-toolchain-cache
+    #- name: 取回缓存 staging_dir
+    #  uses: actions/cache@v5
+    #  with:
+    #    path: |
+    #      ${{ matrix.source }}/staging_dir
+    #    key: ${{ matrix.source }}-toolchain-cache
+    #    restore-keys: |
+    #      ${{ matrix.source }}-toolchain-cache
           
-    - name: SSH链接管理
-      uses: P3TERX/ssh2actions@v1.0.0
+    #- name: SSH链接管理
+    #  uses: P3TERX/ssh2actions@v1.0.0
         
     - name: patch修补
       run: |
         set -x
         cd $SOURCE_NAME
-        find ./staging_dir/ -name '*' -exec touch {} \; >/dev/null 2>&1
+        #find ./staging_dir/ -name '*' -exec touch {} \; >/dev/null 2>&1
         ./scripts/feeds update -a
         cd .. 
         [ -e patch ] && cp -rf patch/diy/*.patch $SOURCE_NAME
