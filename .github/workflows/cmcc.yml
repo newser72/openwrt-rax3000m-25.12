@@ -36,7 +36,9 @@ on:
 
 env:
   DIY_P1_SH: sh/op.sh
-  DIY_P2_SH: sh/add.sh
+  DIY_P2_SH: sh/diy-part1.sh
+  DIY_P3_SH: sh/diy-part2.sh
+
 
 jobs:
   build_firmware:
@@ -133,9 +135,10 @@ jobs:
         
     - name: 加载自定义脚本
       run: |
-        chmod +x $DIY_P1_SH
+        chmod +x $DIY_P1_SH $DIY_P2_SH
         cd $SOURCE_NAME
         $GITHUB_WORKSPACE/$DIY_P1_SH
+        $GITHUB_WORKSPACE/$DIY_P2_SH
         cd ..
         [ -e patch ] && cp -rf patch/nginx/luci.locations $SOURCE_NAME/feeds/packages/net/nginx/files-luci-support
         [ -e patch ] && cp -rf patch/nginx/uci.conf.template $SOURCE_NAME/feeds/packages/net/nginx-util/files
@@ -237,7 +240,8 @@ jobs:
       if: env.ENABLE_5G_25DB == 'true'
       working-directory: ./openwrt
       run: |
-        $GITHUB_WORKSPACE/$DIY_P2_SH
+        chmod +x $DIY_P3_SH
+        $GITHUB_WORKSPACE/$DIY_P3_SH
           
     - name: 下载编译依赖
       id: package
