@@ -31,3 +31,6 @@ echo 'src-git rtp2httpd https://github.com/stackia/rtp2httpd.git' >> feeds.conf.
 cat >> feeds.conf.default <<EOF
 src-git argon https://github.com/jerrykuku/luci-theme-argon.git
 EOF
+
+#uhttpd
+echo 'src-git uhttpd https://github.com/openwrt/uhttpd.git' >> feeds.conf.default
