@@ -260,7 +260,7 @@ jobs:
       if: env.ENABLE_5G_25DB == 'true'
       working-directory: ./openwrt
       run: |
-        chmod +x $DIY_P3_SH
+        chmod +x $GITHUB_WORKSPACE/$DIY_P3_SH
         $GITHUB_WORKSPACE/$DIY_P3_SH
         
     - name: 编译源码
