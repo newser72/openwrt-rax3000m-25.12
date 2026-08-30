@@ -25,3 +25,6 @@ fi
 
 #rtp2httpd
 echo 'src-git rtp2httpd https://github.com/stackia/rtp2httpd.git' >>feeds.conf.default
+
+#luci-theme-argon
+echo 'src-git luci-theme-argon https://github.com/jerrykuku/luci-theme-argon.git' >>feeds.conf.default
