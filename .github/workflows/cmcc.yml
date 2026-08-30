@@ -21,13 +21,13 @@ on:
         description: '自定义插件名称，用空格分隔'
         required: false
         #default: 'luci-theme-m3e luci-app-ttyd luci-app-diskman luci-app-momo'
-        default: 'luci-theme-m3e luci-app-ttyd'
+        default: 'luci-theme-argon'
         type: string
       enable_5g_25db:
         description: '启用 5G 25dB 修改'
-        type: boolean
         required: true
         default: true
+        type: boolean
       ssh:
         description: 'SSH connection to Actions'
         type: boolean
