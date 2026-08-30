@@ -149,7 +149,7 @@ jobs:
         cd $SOURCE_NAME
         $GITHUB_WORKSPACE/$DIY_P1_SH
         $GITHUB_WORKSPACE/$DIY_P2_SH
-        chmod +x $GITHUB_WORKSPACE/$DIY_P3_SH;$GITHUB_WORKSPACE/$DIY_P3_SH
+        #chmod +x $GITHUB_WORKSPACE/$DIY_P3_SH;$GITHUB_WORKSPACE/$DIY_P3_SH
         cd ..
         [ -e patch ] && cp -rf patch/nginx/luci.locations $SOURCE_NAME/feeds/packages/net/nginx/files-luci-support
         [ -e patch ] && cp -rf patch/nginx/uci.conf.template $SOURCE_NAME/feeds/packages/net/nginx-util/files
