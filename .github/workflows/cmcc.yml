@@ -38,7 +38,7 @@ env:
   DIY_P1_SH: sh/op.sh
   DIY_P2_SH: sh/diy-part1.sh
   DIY_P3_SH: sh/diy-part2.sh
-
+  ENABLE_5G_25DB: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.enable_5g_25db || secrets.ENABLE_5G_25DB || 'true' }}
 
 jobs:
   build_firmware:
@@ -246,13 +246,6 @@ jobs:
         for plugin in "${plugins[@]}"; do
           echo "CONFIG_PACKAGE_${plugin}=y" >> $SOURCE_NAME/.config
         done
-
-    - name: 修改 5G 25dB
-      if: env.ENABLE_5G_25DB == 'true'
-      working-directory: ./openwrt
-      run: |
-        chmod +x $DIY_P3_SH
-        $GITHUB_WORKSPACE/$DIY_P3_SH
           
     - name: 下载编译依赖
       id: package
@@ -262,7 +255,14 @@ jobs:
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
-    
+
+    - name: 修改 5G 25dB
+      if: env.ENABLE_5G_25DB == 'true'
+      working-directory: ./openwrt
+      run: |
+        chmod +x $DIY_P3_SH
+        $GITHUB_WORKSPACE/$DIY_P3_SH
+        
     - name: 编译源码
       id: compile
       run: |
