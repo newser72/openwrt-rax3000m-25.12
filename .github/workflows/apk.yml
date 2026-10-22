@@ -1,8 +1,8 @@
 name: apk
 
 on:
-  schedule:
-    - cron: 0 21 * * 1
+#  schedule:
+#    - cron: 0 21 * * 1
   repository_dispatch:
   workflow_dispatch:
 
