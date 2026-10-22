@@ -52,6 +52,12 @@ for patch in *.patch; do
     }
 done
 
+
+# rust
+RUST_VERSION=1.95.0
+RUST_HASH=62b67230754da642a264ca0cb9fc08820c54e2ed7b3baba0289876d4cdb48c08
+sed -ri "s/(PKG_VERSION:=)[^\"]*/\1$RUST_VERSION/;s/(PKG_HASH:=)[^\"]*/\1$RUST_HASH/" feeds/packages/lang/rust/Makefile
+
 # fstools
 rm -rf package/system/fstools
 git clone https://github.com/sbwml/package_system_fstools -b openwrt-25.12 package/system/fstools
@@ -104,7 +110,7 @@ sed -i '/<br \/>/d' feeds/luci/modules/luci-compat/luasrc/view/cbi/full_valuefoo
 
 #golang 26.x
 rm -rf feeds/packages/lang/golang
-git clone https://github.com/sbwml/packages_lang_golang -b 27.x feeds/packages/lang/golang
+git clone https://github.com/sbwml/packages_lang_golang -b 26.x feeds/packages/lang/golang
 
 ./scripts/feeds update -a
 ./scripts/feeds install -a
